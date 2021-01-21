@@ -6,6 +6,7 @@ import { BackendService } from '../backend.service';
   templateUrl: './budget-list.component.html',
   styleUrls: ['./budget-list.component.css']
 })
+
 export class BudgetListComponent implements OnInit {
   budgets: any;
   loader: boolean = false;
@@ -13,10 +14,16 @@ export class BudgetListComponent implements OnInit {
   constructor(private backendService: BackendService) { }
 
   ngOnInit(): void {
+    this.getBudgetList();
+  }
+
+  getBudgetList(){
     this.loader = true;
     this.backendService.getBudgetList().subscribe((data:any)=>{
       this.budgets = data.data.budgets;
       this.loader = false;
+    },error => {
+      console.log("Error while fetching budget list: ",error);
     })
   }
 
