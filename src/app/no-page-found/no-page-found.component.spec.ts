@@ -19,7 +19,7 @@ describe('NoPageFoundComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('It will render no page found template if route is not found', () => {
     expect(component).toBeTruthy();
   });
 });

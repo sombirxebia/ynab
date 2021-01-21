@@ -10,7 +10,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AccountListComponent } from './account-list/account-list.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
-import { CustomPipe } from './custom.pipe';
 import { PayeeListComponent } from './payee-list/payee-list.component';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { PayeeListComponent } from './payee-list/payee-list.component';
     FooterComponent,
     AccountListComponent,
     NoPageFoundComponent,
-    CustomPipe,
     PayeeListComponent
   ],
   imports: [

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { BackendService } from '../backend.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() messageEvent = new EventEmitter<string>();
 
-  constructor(private backendService: BackendService) {
+  constructor() {
     
    }
   ngOnInit(): void {

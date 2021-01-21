@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { PayeeListComponent } from './payee-list.component';
 
 describe('PayeeListComponent', () => {
@@ -8,7 +9,8 @@ describe('PayeeListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PayeeListComponent ]
+      declarations: [ PayeeListComponent ],
+      imports:[RouterTestingModule, HttpClientModule ]
     })
     .compileComponents();
   });
@@ -19,7 +21,7 @@ describe('PayeeListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Get list of all payees', () => {
     expect(component).toBeTruthy();
   });
 });

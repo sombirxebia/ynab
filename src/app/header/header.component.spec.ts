@@ -19,7 +19,7 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Rendering header component in each component template', () => {
     expect(component).toBeTruthy();
   });
 });

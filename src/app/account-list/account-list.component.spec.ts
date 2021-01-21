@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { FormGroup, ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
 import { AccountListComponent } from './account-list.component';
 
 describe('AccountListComponent', () => {
@@ -8,7 +10,8 @@ describe('AccountListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AccountListComponent ]
+      declarations: [ AccountListComponent ],
+      imports:[RouterTestingModule, HttpClientModule, FormsModule, ReactiveFormsModule ]
     })
     .compileComponents();
   });
@@ -19,7 +22,7 @@ describe('AccountListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create a form using formbuilder', () => {
+    expect(component.createNewAccount instanceof FormGroup).toBeTruthy();
   });
 });
