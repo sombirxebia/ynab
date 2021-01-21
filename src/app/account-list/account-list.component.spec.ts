@@ -22,7 +22,11 @@ describe('AccountListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create a form using formbuilder', () => {
+  it('Get list of all accounts', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should create a form to create new account using formbuilder', () => {
     expect(component.createNewAccount instanceof FormGroup).toBeTruthy();
   });
 });

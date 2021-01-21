@@ -46,5 +46,10 @@ export class BackendService {
     return this.http.get(this.baseUrl+"/budgets/"+budget_id+"/payees/"+payee_id+"/transactions", { headers: this.headers })
     .pipe(catchError(this.handleError));
   }
+
+  makeTransaction(budget_id: string, postObject : any,) {
+    return this.http.post(this.baseUrl+"/budgets/"+budget_id+"/transactions",  postObject, { headers: this.headers })
+    .pipe(catchError(this.handleError));
+  }
   
 }

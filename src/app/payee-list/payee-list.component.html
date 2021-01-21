@@ -16,6 +16,7 @@
                     <td>{{payee.name}}</td>
                     <td>{{payee.deleted ? 'Yes' : 'No'}}</td>
                     <td><a (click)="openPayeeDetails(budgetDetails.id, payee.id)" class="viewMore cursor">View Transactions</a></td>
+                    <td><a (click)="openMakeTransaction(budgetDetails.id, payee.id)" class="viewMore cursor">Make Transactions</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -47,6 +48,7 @@
                         <th>Account Name</th>
                         <th>Payee Name</th>
                         <th>Category Name</th>
+                        <th>Memo</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -56,6 +58,7 @@
                         <td>{{payeTrans.account_name}}</td>
                         <td>{{payeTrans.payee_name}}</td>
                         <td>{{payeTrans.category_name}}</td>
+                        <td>{{payeTrans.memo}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -66,6 +69,60 @@
             <div class="modal-footer">
                 <button type="button" (click)="closePayeeDetails()" class="btn btn-primary">Close</button>
             </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Modal Make Transaction-->
+<div class="modal fade" id="makeNewTransaction" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Make Transaction </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form [formGroup]="makeTransaction" (ngSubmit)="onSubmit()">
+            <div class="modal-body">
+                    <div class="form-group">
+                    <label for="accountName">Select Account</label>
+                    <select class="form-control" formControlName="accountName" id="accountName" required>
+                        <option value="{{account.id}}" *ngFor="let account of budgetAccounts">{{account.name}}</option>
+                    </select>
+                    </div>
+                    <div *ngIf="isValidInput('accountName')" class="alert alert-danger">
+                        <div *ngIf="isRequiredInput('accountName')">Account Name is required.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="payee">Select Payee</label>
+                        <select class="form-control" formControlName="payee" id="payee" required>
+                            <option value="{{payee.id}}" *ngFor="let payee of budgetPayees">{{payee.name}}</option>
+                        </select>
+                        </div>
+                    <div *ngIf="isValidInput('payee')" class="alert alert-danger">
+                        <div *ngIf="isRequiredInput('payee')">Payee is required.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="memo">Memo</label>
+                        <input type="text" class="form-control" formControlName="memo" id="memo" required>
+                    </div>
+                    <div *ngIf="isValidInput('memo')" class="alert alert-danger">
+                        <div *ngIf="isRequiredInput('memo')">Memo is required.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount?
+                        </label>
+                        <input type="number" class="form-control" formControlName="amount" id="amount" required>
+                    </div>
+                    <div *ngIf="isValidInput('amount')" class="alert alert-danger">
+                        <div *ngIf="isRequiredInput('amount')">Amount is required.</div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" [disabled]="!makeTransaction.valid" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
         </div>
     </div>
     </div>
